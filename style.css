@@ -1,0 +1,46 @@
+*{
+  margin: 0;
+}
+
+h1{
+  text-align: center;
+}
+
+.gameBoard{
+  display: grid;
+  max-width: 500px;
+  min-height: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  grid-template-columns: auto auto auto;
+  grid-template-rows: auto auto auto;
+}
+
+.cell{
+ width: 100%;
+ height: 100%;
+}
+
+.cell:hover{
+  background-color: #C8C8C8;
+}
+
+.b1{
+ border: 1px black solid;
+}
+
+.a0, .a2{
+ border-bottom: 1px black solid;
+}
+
+.c0, .c2{
+ border-top: 1px black solid;
+}
+
+.a0, .c0{
+ border-right: 1px black solid;
+}
+
+.a2, .c2{
+ border-left: 1px black solid;
+}
