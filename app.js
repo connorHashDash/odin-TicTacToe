@@ -25,17 +25,16 @@ let gameBoard = (() => {
           cellArray[h] = `${row}${j}`;
           boardDiv.appendChild(cell);
           cell.addEventListener('click', function() {
+            if(this.innerHTML == 'x'){
             log(`${row}${j}`)
             let cross = document.createElement('p');
-            let holder = document.createElement('div');
-            holder.className = `holder`;
             cross.className = `contents`;
             cross.innerHTML = `x`;
-            cell.appendChild(holder);
-            holder.appendChild(cross);
+            cell.appendChild(cross);
+            }
           });
-          j++;
-          h++;
+        j++;
+        h++;
       }
     return {counter}
   })()
@@ -57,5 +56,3 @@ let winChecker = () => {
   for(c = 0; c < cellArray.length; c++){
   }
 }
-log(cellArray[0].slice(1,2))
-
