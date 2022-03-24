@@ -24,15 +24,18 @@ let gameBoard = (() => {
           cell.className = `${row}${j} cell`;
           cellArray[h] = `${row}${j}`;
           boardDiv.appendChild(cell);
+          let pressed = false;
           cell.addEventListener('click', function() {
-            if(this.innerHTML == 'x'){
+            if (pressed == false){
             log(`${row}${j}`)
             let cross = document.createElement('p');
             cross.className = `contents`;
             cross.innerHTML = `x`;
             cell.appendChild(cross);
+            log(this.className)
+            pressed = true
             }
-          });
+            });
         j++;
         h++;
       }
