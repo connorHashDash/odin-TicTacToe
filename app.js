@@ -10,15 +10,19 @@ let game = (() => {
   const cellMaker = ((row) => {
 
   let cellFactory = (row, col) => {
-    let nought = false
-    let cross = true
+    let nought = false;
+    let cross = true;
+    let cell = document.createElement('div');
     const create = (row, col) => {
-      let cell = document.createElement('div');
       cell.className = `${row}${col} cell`;
       boardDiv.appendChild(cell);
+      cell.addEventListener('click', function() {
+        let cross = document.createElement('p')
+        cross.innerHTML='x'
+        cell.appendChild(cross)
+      })
     }
     const play = () => { 
-      
     };
 
     return {row, col, create, play}
