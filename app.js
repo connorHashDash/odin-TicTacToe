@@ -1,61 +1,46 @@
-const log = console.log
+// Make an object constructor when the cells are being created.
+// Program a computer and player controlled state of the cells which is triggered upon clicking
+// The cell or the computer taking it.
+const log = console.log;
 // Variable Declarations
-let boardDiv = document.getElementById('gameBoard')
-
+let boardDiv = document.getElementById('gameBoard');
 //The Game board is stored in this array
 let cellArray = [];
-
-let cellStates = () => {
-  const neutral = () => {log('works')};
-  const player = () => {};
-  const comp = () => {};
-  return {neutral, player, comp}
-}
-
-
-let gameBoard = (() => {
-
+let game = (() => {
   const cellMaker = ((row) => {
-    let j = 0;
-    let h = 0;
-      let counter = (row) => {
-        if (j > 2) {j = 0} 
-          let cell = document.createElement('div');
-          cell.className = `${row}${j} cell`;
-          cellArray[h] = `${row}${j}`;
-          boardDiv.appendChild(cell);
-          let pressed = false;
-          cell.addEventListener('click', function() {
-            if (pressed == false){
-            log(`${row}${j}`)
-            let cross = document.createElement('p');
-            cross.className = `contents`;
-            cross.innerHTML = `x`;
-            cell.appendChild(cross);
-            log(this.className)
-            pressed = true
-            }
-            });
-        j++;
-        h++;
-      }
-    return {counter}
-  })()
 
+  let cellFactory = (row, col) => {
+    let nought = false
+    let cross = true
+    const create = (row, col) => {
+      let cell = document.createElement('div');
+      cell.className = `${row}${col} cell`;
+      boardDiv.appendChild(cell);
+    }
+    const play = () => { 
+      
+    };
 
-  for (let i = 0; i < 9; i++) {
+    return {row, col, create, play}
+  }
+
+    let j = 0
+  for (let i = 0; i < 9; i++) { //This creates the gameboard and assigns the cells names
+    if (j > 2) {j = 0}
     if (i < 3) {
-      cellMaker.counter('a')
+      cellArray[i] = cellFactory()
+      cellArray[i].create('a', j)
+     j++ 
     } else if (i < 6) {
-      cellMaker.counter('b')
+      cellArray[i] = cellFactory()
+      cellArray[i].create('b', j)
+     j++ 
     } else {
-      cellMaker.counter('c')
+      cellArray[i] = cellFactory()
+      cellArray[i].create('c', j)
+     j++ 
     }
   }
+
+  })()
 })()
-
-
-let winChecker = () => {
-  for(c = 0; c < cellArray.length; c++){
-  }
-}
