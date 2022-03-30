@@ -1,9 +1,26 @@
 *{
   margin: 0;
+  font-family: arial;
+  color: white;
+}
+
+body{
+  background-color: #252525
 }
 
 h1{
   text-align: center;
+}
+
+.scores{
+  display: flex;
+  justify-content: space-around;
+  margin-top: 1rem;
+  margin-bottom: 4rem;
+}
+
+.scoreBox{
+  font-family: arial;
 }
 
 .gameBoard{
@@ -15,13 +32,13 @@ h1{
   grid-template-columns: 199px 199px 199px;
 }
 
-#cell{
+.cell{
  max-width: 199px;
  max-height: 199px;
  min-width: 199px;
  min-height: 199px;
  padding: 0;
- margin 0;
+ margin: 0;
  display: flex;
  align-items: center;
  justify-content: center;
@@ -36,26 +53,52 @@ h1{
  font-size: 90px; 
 }
 
+.cell{
+  border: 1px white solid;
+}
+
 .cell:hover{
-  background-color: #C8C8C8;
+  transition: all ease 0.2s;
+  background-color: #630000;
 }
 
-.b1{
- border: 1px black solid;
+.gameBoard{
+  border-radius: 15px;
 }
 
-.a0, .a2{
- border-bottom: 1px black solid;
+.a0{
+  border-top:1px #252525 solid;
+  border-left: 1px #252525 solid;
 }
 
-.c0, .c2{
- border-top: 1px black solid;
+.a1{
+  border-top:1px #252525 solid;
 }
 
-.a0, .c0{
- border-right: 1px black solid;
+.a2{
+  border-top:1px #252525 solid;
+  border-right:1px #252525 solid;
 }
 
-.a2, .c2{
- border-left: 1px black solid;
+.b0{
+  border-left: 1px #252525 solid;
+}
+
+.b2{
+  border-right:1px #252525 solid;
+}
+
+.c0{
+  border-bottom:1px #252525 solid;
+  border-left:1px #252525 solid;
+}
+
+.c1{
+  border-bottom:1px #252525 solid;
+}
+
+.c2{
+  border-bottom:1px #252525 solid;
+  border-right:1px #252525 solid;
+
 }

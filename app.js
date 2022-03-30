@@ -5,15 +5,16 @@ let boardDiv = document.getElementById('gameBoard');
 let token = 'x';
 let cellArray = [];
 
+let playerFactory = () => {
+  let score = 0
+  let name 
+  return {name, score}
+}
 
 let game = (function()  {
-
-  let playerFactory = () => {
-    let score = 0
-    return {score}
-  }
   
   let reset = () => {
+    playerFactory.score++
     boardDiv.innerHTML=''
     cellMaker.createLoop()
   }
