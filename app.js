@@ -5,6 +5,7 @@ let boardDiv = document.getElementById('gameBoard');
 let token = 'x';
 let cellArray = [];
 
+
 let game = (function()  {
 
   let playerFactory = () => {
@@ -13,8 +14,8 @@ let game = (function()  {
   }
   
   let reset = () => {
-    let cells = document.getElementsByClassName("cell")
-    cells.innerHTML=''
+    boardDiv.innerHTML=''
+    cellMaker.createLoop()
   }
 
   let win = (checker) => {
@@ -24,7 +25,6 @@ let game = (function()  {
    if(token == 'o'){
     alert('o wins!')
    }
-    reset()
     reset()
   }
 
@@ -111,6 +111,7 @@ let game = (function()  {
   }
 
   let j = 0
+    let createLoop = () => {
   for (let i = 0; i < 9; i++) { //This creates the gameboard and assigns the cells names
     if (j > 2) {j = 0}
     if (i < 3) {
@@ -125,6 +126,8 @@ let game = (function()  {
     }
     j++ 
   }
+    }; createLoop()
 
+  return {createLoop}
   })()
 })()
