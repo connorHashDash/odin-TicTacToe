@@ -4,65 +4,77 @@ let boardDiv = document.getElementById('gameBoard');
 //The Game board is stored in this array
 let token = 'x';
 let cellArray = [];
+
 let game = (function()  {
 
+  let playerFactory = () => {
+    let score = 0
+    return {score}
+  }
+  
+  let reset = () => {
+    let cells = document.getElementsByClassName("cell")
+    cells.innerHTML=''
+  }
+
+  let win = (checker) => {
+    if(token == 'x'){
+    alert(`x wins`)
+    }
+   if(token == 'o'){
+    alert('o wins!')
+   }
+    reset()
+    reset()
+  }
+
   let winChecker = () => {
-    for(i = 0; i < cellArray.length; i++){
-      if (cellArray[0].cellToken !== undefined){
-        if(cellArray[0].cellToken == cellArray[1].cellToken && 
-          cellArray[1].cellToken == cellArray[2].cellToken){
-          alert('win')
-          return
-        }
+    if (cellArray[0].cellToken !== undefined){
+      if(cellArray[0].cellToken == cellArray[1].cellToken && 
+        cellArray[1].cellToken == cellArray[2].cellToken){
+        win('1')
       }
-      if (cellArray[3].cellToken !== undefined){
-        if(cellArray[3].cellToken == cellArray[4].cellToken && 
-          cellArray[4].cellToken == cellArray[5].cellToken){
-          alert('win')
-          return
-        }
+    }
+    if (cellArray[3].cellToken !== undefined){
+      if(cellArray[3].cellToken == cellArray[4].cellToken && 
+        cellArray[4].cellToken == cellArray[5].cellToken){
+        win('2')
       }
-      if (cellArray[6].cellToken !== undefined){
-        if(cellArray[6].cellToken == cellArray[7].cellToken && 
-          cellArray[7].cellToken == cellArray[8].cellToken){
-          alert('win')
-          return
-        }
+    }
+    if (cellArray[6].cellToken !== undefined){
+      if(cellArray[6].cellToken == cellArray[7].cellToken && 
+        cellArray[7].cellToken == cellArray[8].cellToken){
+        win('3')
       }
-      if (cellArray[0].cellToken !== undefined){
-        if(cellArray[0].cellToken == cellArray[3].cellToken && 
-          cellArray[3].cellToken == cellArray[6].cellToken){
-          alert('win')
-          return
-        }
+    }
+    if (cellArray[0].cellToken !== undefined){
+      if(cellArray[0].cellToken == cellArray[3].cellToken && 
+        cellArray[3].cellToken == cellArray[6].cellToken){
+        win('4')
       }
-      if (cellArray[1].cellToken !== undefined){
-        if(cellArray[1].cellToken == cellArray[4].cellToken && 
-          cellArray[4].cellToken == cellArray[7].cellToken){
-          alert('win')
-          return
-        }
+    }
+    if (cellArray[1].cellToken !== undefined){
+      if(cellArray[1].cellToken == cellArray[4].cellToken && 
+        cellArray[4].cellToken == cellArray[7].cellToken){
+        win('5')
       }
-      if (cellArray[2].cellToken !== undefined){
-        if(cellArray[2].cellToken == cellArray[5].cellToken && 
-          cellArray[5].cellToken == cellArray[8].cellToken){
-          alert('win')
-          return
-        }
+    }
+    if (cellArray[2].cellToken !== undefined){
+      if(cellArray[2].cellToken == cellArray[5].cellToken && 
+        cellArray[5].cellToken == cellArray[8].cellToken){
+        win('6')
       }
-      if (cellArray[0].cellToken !== undefined){
-        if(cellArray[0].cellToken == cellArray[4].cellToken && 
-          cellArray[4].cellToken == cellArray[8].cellToken){
-          alert('win')
-          return
-        }
+    }
+    if (cellArray[0].cellToken !== undefined){
+      if(cellArray[0].cellToken == cellArray[4].cellToken && 
+        cellArray[4].cellToken == cellArray[8].cellToken){
+        win('7')
       }
-      if (cellArray[2].cellToken !== undefined){
-        if(cellArray[2].cellToken == cellArray[4].cellToken && 
-          cellArray[4].cellToken == cellArray[6].cellToken){
-          alert('win')
-          return
-        }
+    }
+    if (cellArray[2].cellToken !== undefined){
+      if(cellArray[2].cellToken == cellArray[4].cellToken && 
+        cellArray[4].cellToken == cellArray[6].cellToken){
+        win('8')
       }
     }
   }
@@ -75,6 +87,7 @@ let game = (function()  {
 
     const create = (row, col) => {
       cell.className = `${row}${col} cell`;
+      cell.id = 'cell'
       boardDiv.appendChild(cell);
       cell.addEventListener('click', function() {play()} ) //Call a click function like this
       return {row, col}

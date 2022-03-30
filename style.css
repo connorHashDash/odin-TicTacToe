@@ -15,7 +15,7 @@ h1{
   grid-template-columns: 199px 199px 199px;
 }
 
-.cell{
+#cell{
  max-width: 199px;
  max-height: 199px;
  min-width: 199px;
