@@ -12,6 +12,84 @@ h1{
   text-align: center;
 }
 
+h3{
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.subHeader{
+  font-size: 1.3rem;
+}
+
+.newGameForm{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 701px;
+  height: 700px;
+  max-width: 701px;
+  max-height: 700px;  
+  border: solid 1px white;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54%) scale(0);
+  z-index: 10;
+  background-color: #252525;
+}
+
+.newGameForm.active{
+  transform: translate(-50%, -54%) scale(1);
+}
+
+.form{
+  display: flex;
+  width: 579px;
+  justify-content: space-evenly;
+}
+
+.spacer{
+  width: 195px;
+}
+
+.spacer2{
+  width: 368px;
+}
+
+.formItem{
+  display: flex;
+  margin-top: 2rem;
+  justify-content: space-evenly;
+  font-size:1.5rem;
+}
+
+.rule{
+  margin-top: 2rem;
+}
+
+select{
+  color: black;
+  width: 81px;
+}
+
+.textInput{
+  color: black;
+}
+
+h2{
+  margin-top: 2rem;
+  font-size: 3rem;
+}
+
+.playButton1{
+  margin-top: 2rem;
+  height: 3rem;
+}
+
+.playButton{
+  margin-top: 2rem;
+  height: 3rem;
+}
 .scores{
   display: flex;
   justify-content: space-around;
@@ -64,6 +142,43 @@ h1{
 
 .gameBoard{
   border-radius: 15px;
+}
+
+.resetHolder{
+  margin-top: 74px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button{
+  background: 0;
+  border: 0;
+  height: 100%;
+  width: 100%;
+  font-size: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF7474;
+  cursor: pointer;
+}
+
+
+#resetButton{
+  height: 3rem;
+  display: flex;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  align-items: center;
+  justify-content: center;
+  background-color: #FF7474;
+}
+
+button:hover, #resetButton:hover{
+  transition: all ease 0.1s;
+  background-color: #630000;
+  cursor: pointer;
 }
 
 .a0{

@@ -1,17 +1,17 @@
 const log = console.log;
 // Variable Declarations
 let boardDiv = document.getElementById('gameBoard');
-//The Game board is stored in this array
-let token = 'x';
-let cellArray = [];
+const openFormButton = document.querySelectorAll('[data-modal-target]')
+const closeFormButton = document.querySelectorAll('[data-close-button]')
+//The Game board is stored in this array let token = 'x'; let cellArray = [];
+let playerArray = [];
 
-let playerFactory = () => {
+let playerFactory = (name) => {
   let score = 0
-  let name 
   return {name, score}
 }
 
-let game = (function()  {
+let game = (function() {
   
   let reset = () => {
     playerFactory.score++
@@ -20,6 +20,32 @@ let game = (function()  {
     cellMaker.createLoop()
     token = 'x';
   }
+  
+  let newGame = (() => {
+    let newGame = document.getElementById('newGameButton')
+      newGame.addEventListener('click', function() {
+      boardDiv.innerHTML=''
+      cellMaker.createLoop()
+    })
+  })()
+  
+  let manualReset = (() => {
+    let resetButton = document.getElementById('resetButton');
+    resetButton.addEventListener('click', function() {reset()})
+  })()
+
+  openFormButton.forEach(button => {
+      button.addEventListener('click', () => {
+          const modal = document.querySelector(button.dataset.modalTarget)
+          openModal(modal)
+      })
+  })
+
+  function openModal(modal) {
+      if (modal == null) return
+      modal.classList.add('active')
+  }
+
 
   let win = (checker) => {
     if(checker == 'draw'){
@@ -94,7 +120,6 @@ let game = (function()  {
     }
   }
 
-
   const cellMaker = (function(row, col) {
   let cellFactory = (row, col) => {
     let cell = document.createElement('div');
@@ -142,7 +167,7 @@ let game = (function()  {
     }
     j++ 
   }
-    }; createLoop()
+    };
 
   return {createLoop}
   })()

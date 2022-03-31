@@ -8,14 +8,82 @@
   <link rel="icon" type='image/x-con' href="favicon/favi.png">
 </head>
 <body>
+  <div id="modal" data-modal-target='#modal' class="newGameForm">
+    <div>
+    <h2>New Game</h2>
+    </div>
+    <div class="subHeader">
+       <h3>2 Player</h3>
+    </div>
+
+    <form id='2player' action="/" method='GET'>
+      <div class="form">
+        <div class="names">
+          <div class="player1 formItem">
+            <label for="player1Input">Player 1 Name: </label>
+            <div class='spacer'></div>
+            <input class='textInput' id='player1Input' type="text">
+          </div>
+          <div class="player2 formItem">
+            <label for="player2Input">Player 2 Name: </label>
+            <div class='spacer'></div>
+            <input class='textInput' id='player2Input' type="text">
+          </div>
+        <button id='formSubmit2p' type='submit' class='playButton1'>
+          PLAY
+        </button>
+          <hr class='rule'>
+        </div>
+      </div>
+    </form>
+
+    <form id='vsComp' action="/" method='GET'>
+    <div class="compSettings">
+      <div class="subHeader">
+        <h3>Vs. Computer</h3>
+      </div>
+        <div class="player1 formItem">
+          <label for="player1Input">Player 1 Name: </label>
+          <div class='spacer'></div>
+          <input class='textInput' id='player1Input' type="text">
+        </div>
+      <div class="selector formItem">
+        <label for="difficulty">Difficulty: </label>
+        <div class="spacer2"></div>
+        <select id="difficulty" name="difficulty">
+          <option value="easy">easy</option>
+          <option value="normal">normal</option>
+          <option value="normal">hard</option>
+        </select>
+      </div>
+      <button id='formSubmitComp' type='submit' class='playButton'>
+        PLAY
+      </button>
+    </div>
+    </form>
+
+  </div>
+
   <br>
-  <h1>Noughts and Crosses</h1>
+  <h1>Noughts and Crosses!</h1>
   <br>
   <div class="scores">
     <div class='scoreBox' id="score1"></div>
     <div class='scoreBox' id="score2"></div>
   </div>
   <div class="gameBoard" id='gameBoard'>
+  </div>
+  <div class="resetHolder">
+    <div>
+      <button data-modal-target='#modal' id='newGameButton' class="newGameText">
+        New Game
+      </button>
+    </div>
+    <div id="resetButton">
+      <p class="resetText">
+        Reset
+      </p>
+    </div>
   </div>
 </body>
 </html>
