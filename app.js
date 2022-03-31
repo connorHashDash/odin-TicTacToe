@@ -16,16 +16,19 @@ let game = (function()  {
   let reset = () => {
     playerFactory.score++
     boardDiv.innerHTML=''
+    cellArray = []
     cellMaker.createLoop()
+    token = 'x';
   }
 
   let win = (checker) => {
-    if(token == 'x'){
-    alert(`x wins`)
+    if(checker == 'draw'){
+      alert('draw')
+    } else if(token == 'x'){
+      alert(`x wins`)
+    } else if(token == 'o'){
+      alert('o wins!')
     }
-   if(token == 'o'){
-    alert('o wins!')
-   }
     reset()
   }
 
@@ -78,7 +81,19 @@ let game = (function()  {
         win('8')
       }
     }
+    if (cellArray[0].cellToken !== undefined && 
+      cellArray[1].cellToken !== undefined &&
+      cellArray[2].cellToken !== undefined && 
+      cellArray[3].cellToken !== undefined && 
+      cellArray[4].cellToken !== undefined && 
+      cellArray[5].cellToken !== undefined && 
+      cellArray[6].cellToken !== undefined && 
+      cellArray[7].cellToken !== undefined && 
+      cellArray[8].cellToken !== undefined ){
+      win('draw')
+    }
   }
+
 
   const cellMaker = (function(row, col) {
   let cellFactory = (row, col) => {
