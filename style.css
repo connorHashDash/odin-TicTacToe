@@ -21,7 +21,7 @@ h3{
   font-size: 1.3rem;
 }
 
-.newGameForm{
+.modalForm{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,7 +38,7 @@ h3{
   background-color: #252525;
 }
 
-.newGameForm.active{
+.modalForm.active{
   transform: translate(-50%, -54%) scale(1);
 }
 
@@ -72,6 +72,10 @@ select{
   width: 81px;
 }
 
+option{
+  color: black;
+}
+
 .textInput{
   color: black;
 }
@@ -97,8 +101,14 @@ h2{
   margin-bottom: 4rem;
 }
 
+#gameInfo{
+  height: 38px;
+  font-size: 2rem;
+}
+
 .scoreBox{
   font-family: arial;
+  font-size: 1.5rem;
 }
 
 .gameBoard{
@@ -153,7 +163,7 @@ h2{
 button{
   background: 0;
   border: 0;
-  height: 100%;
+  height: 3rem;
   width: 100%;
   font-size: 1rem;
   padding-left: 1rem;

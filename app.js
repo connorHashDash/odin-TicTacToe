@@ -1,10 +1,10 @@
 const log = console.log;
 // Variable Declarations
 let boardDiv = document.getElementById('gameBoard');
-const openFormButton = document.querySelectorAll('[data-modal-target]')
-const closeFormButton = document.querySelectorAll('[data-close-button]')
 //The Game board is stored in this array let token = 'x'; let cellArray = [];
-let playerArray = [];
+let cellArray = [];
+
+let token = 'x'
 
 let playerFactory = (name) => {
   let score = 0
@@ -12,13 +12,38 @@ let playerFactory = (name) => {
 }
 
 let game = (function() {
+
+  let player = []
+  const openFormButton = document.querySelectorAll('[data-modal-target]')
+  const closeFormButton = document.querySelectorAll('[data-close-button]')
+  const form1 = document.getElementById('2player')
+  const form2 = document.getElementById('vsComp')
   
+  form1.addEventListener('submit', (e) => {
+    e.preventDefault()
+    player[0] = playerFactory(document.getElementById('player1Input').value)
+    player[1] = playerFactory(document.getElementById('player2Input').value)
+    let test = document.getElementById('modalForm')
+    test.classList.remove('active')
+    scoreUpdater()
+  })
+
+  let scoreUpdater = () => {
+    let p1Score = document.getElementById('score1')
+    let p2Score = document.getElementById('score2')
+    p1Score.innerHTML=`${player[0].name}: ${player[0].score}`
+    p2Score.innerHTML=`${player[1].name}: ${player[1].score}`
+  }
+
+  form2.addEventListener('submit', (e) => {
+    e.preventDefault()
+  })
+
   let reset = () => {
-    playerFactory.score++
     boardDiv.innerHTML=''
     cellArray = []
-    cellMaker.createLoop()
     token = 'x';
+    cellMaker.createLoop()
   }
   
   let newGame = (() => {
@@ -26,36 +51,25 @@ let game = (function() {
       newGame.addEventListener('click', function() {
       boardDiv.innerHTML=''
       cellMaker.createLoop()
+      let test = document.getElementById('modalForm')
+        test.classList.add('active')
     })
   })()
   
-  let manualReset = (() => {
-    let resetButton = document.getElementById('resetButton');
-    resetButton.addEventListener('click', function() {reset()})
-  })()
-
-  openFormButton.forEach(button => {
-      button.addEventListener('click', () => {
-          const modal = document.querySelector(button.dataset.modalTarget)
-          openModal(modal)
-      })
-  })
-
-  function openModal(modal) {
-      if (modal == null) return
-      modal.classList.add('active')
-  }
-
-
   let win = (checker) => {
+    let gameInfo = document.getElementById('gameInfo')
     if(checker == 'draw'){
-      alert('draw')
+      gameInfo.innerHTML=`Draw!`
     } else if(token == 'x'){
-      alert(`x wins`)
+      player[0].score++
+      gameInfo.innerHTML=`${player[0].name} wins!`
     } else if(token == 'o'){
-      alert('o wins!')
+      player[1].score++
+      gameInfo.innerHTML=`${player[1].name} wins!`
     }
+    scoreUpdater()
     reset()
+    log(token)
   }
 
   let winChecker = () => {
@@ -120,6 +134,7 @@ let game = (function() {
     }
   }
 
+
   const cellMaker = (function(row, col) {
   let cellFactory = (row, col) => {
     let cell = document.createElement('div');
@@ -137,11 +152,15 @@ let game = (function() {
     const play = function() { 
       if (played == false) {
         let cross = document.createElement('p');
+        let gameInfo = document.getElementById('gameInfo')
+        log(token)
+        gameInfo.innerHTML=''
         cross.innerHTML=`${token}`;
         cross.className ='contents';
         cell.appendChild(cross);
         played = true;
         cellToken = token;
+        
         winChecker()
         if (token == 'x'){token = 'o'; return;}
         else {token = 'x'}
